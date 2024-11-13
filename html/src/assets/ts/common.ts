@@ -187,7 +187,7 @@ _gb.prototype.CommonFunction = () => {
   };
   const axiosListUp = function () {
     axios
-      .get('../assets/json/list.json')
+      .get('assets/json/list.json')
       .then(function (result) {
         gb.listTrg = document.getElementById('prj-select');
         const list = document.querySelector('.pf-list');
