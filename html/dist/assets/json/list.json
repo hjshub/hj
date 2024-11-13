@@ -47,19 +47,19 @@
         "(주)프로라이팅 홈페이지 리뉴얼"
       ],
       "imgSrc": [
-        "../assets/images/thumbnail/kics.png",
-        "../assets/images/thumbnail/mice.jpg",
-        "../assets/images/thumbnail/liveSeoul.jpg",
-        "../assets/images/thumbnail/weeples.jpg",
-        "../assets/images/thumbnail/smc.jpg",
-        "../assets/images/thumbnail/hospice.jpg",
-        "../assets/images/thumbnail/mine.jpg",
-        "../assets/images/thumbnail/taekyung.jpg",
-        "../assets/images/thumbnail/dwhp.jpg",
-        "../assets/images/thumbnail/11st.jpg",
-        "../assets/images/thumbnail/scipia_archive.jpg",
-        "../assets/images/thumbnail/scipia_main.jpg",
-        "../assets/images/thumbnail/prolighting.jpg"
+        "assets/images/thumbnail/kics.png",
+        "assets/images/thumbnail/mice.jpg",
+        "assets/images/thumbnail/liveSeoul.jpg",
+        "assets/images/thumbnail/weeples.jpg",
+        "assets/images/thumbnail/smc.jpg",
+        "assets/images/thumbnail/hospice.jpg",
+        "assets/images/thumbnail/mine.jpg",
+        "assets/images/thumbnail/taekyung.jpg",
+        "assets/images/thumbnail/dwhp.jpg",
+        "assets/images/thumbnail/11st.jpg",
+        "assets/images/thumbnail/scipia_archive.jpg",
+        "assets/images/thumbnail/scipia_main.jpg",
+        "assets/images/thumbnail/prolighting.jpg"
       ],
       "contents": [
         "[수행기간]<br/>2023.05.08 ~ 2024.11.30<br/><br/>[퍼블리싱]<br/>2023.05.08 ~ 2024.11.30",
@@ -133,31 +133,31 @@
         "11번가 홍보팀 홈페이지"
       ],
       "imgSrc": [
-        "../assets/images/thumbnail/scipia_main.jpg",
-        "../assets/images/thumbnail/tour.jpg",
-        "../assets/images/thumbnail/kirams.jpg",
-        "../assets/images/thumbnail/kcch.jpg",
-        "../assets/images/thumbnail/kumhoe.jpg",
-        "../assets/images/thumbnail/oullim.jpg",
-        "../assets/images/thumbnail/dwfnb.jpg",
-        "../assets/images/thumbnail/dwleaders.jpg",
-        "../assets/images/thumbnail/dwkjc.jpg",
-        "../assets/images/thumbnail/dwedu.jpg",
-        "../assets/images/thumbnail/dwgnc.jpg",
-        "../assets/images/thumbnail/dwchj.jpg",
-        "../assets/images/thumbnail/dwml.jpg",
-        "../assets/images/thumbnail/dwsys.jpg",
-        "../assets/images/thumbnail/dwce.jpg",
-        "../assets/images/thumbnail/dwhf.jpg",
-        "../assets/images/thumbnail/dwfarms.jpg",
-        "../assets/images/thumbnail/dwwine.jpg",
-        "../assets/images/thumbnail/dwscasa.jpg",
-        "../assets/images/thumbnail/dwloex.jpg",
-        "../assets/images/thumbnail/dwloexcs.jpg",
-        "../assets/images/thumbnail/dwmedia.jpg",
-        "../assets/images/thumbnail/skplanet.jpg",
-        "../assets/images/thumbnail/trueino.jpg",
-        "../assets/images/thumbnail/11st.jpg"
+        "assets/images/thumbnail/scipia_main.jpg",
+        "assets/images/thumbnail/tour.jpg",
+        "assets/images/thumbnail/kirams.jpg",
+        "assets/images/thumbnail/kcch.jpg",
+        "assets/images/thumbnail/kumhoe.jpg",
+        "assets/images/thumbnail/oullim.jpg",
+        "assets/images/thumbnail/dwfnb.jpg",
+        "assets/images/thumbnail/dwleaders.jpg",
+        "assets/images/thumbnail/dwkjc.jpg",
+        "assets/images/thumbnail/dwedu.jpg",
+        "assets/images/thumbnail/dwgnc.jpg",
+        "assets/images/thumbnail/dwchj.jpg",
+        "assets/images/thumbnail/dwml.jpg",
+        "assets/images/thumbnail/dwsys.jpg",
+        "assets/images/thumbnail/dwce.jpg",
+        "assets/images/thumbnail/dwhf.jpg",
+        "assets/images/thumbnail/dwfarms.jpg",
+        "assets/images/thumbnail/dwwine.jpg",
+        "assets/images/thumbnail/dwscasa.jpg",
+        "assets/images/thumbnail/dwloex.jpg",
+        "assets/images/thumbnail/dwloexcs.jpg",
+        "assets/images/thumbnail/dwmedia.jpg",
+        "assets/images/thumbnail/skplanet.jpg",
+        "assets/images/thumbnail/trueino.jpg",
+        "assets/images/thumbnail/11st.jpg"
       ],
       "contents": [
         "[수행기간]<br/>2019.01.02 ~ 2019.12.31",
@@ -199,9 +199,9 @@
         "2020년 과천과학관 웹 접근성 인증 취득"
       ],
       "imgSrc": [
-        "../assets/images/thumbnail/wa_mark.jpg",
-        "../assets/images/thumbnail/wa_mark.jpg",
-        "../assets/images/thumbnail/wa_mark.jpg"
+        "assets/images/thumbnail/wa_mark.jpg",
+        "assets/images/thumbnail/wa_mark.jpg",
+        "assets/images/thumbnail/wa_mark.jpg"
       ],
       "contents": [
         "[총 작업기간]<br/>2020.11.01 ~ 2020.11.28",
@@ -212,7 +212,7 @@
     "type04": {
       "url": [""],
       "title": ["정책 자금 원스톱 서비스(정부24) 프로토타이핑"],
-      "imgSrc": ["../assets/images/thumbnail/framer01.jpg"],
+      "imgSrc": ["assets/images/thumbnail/framer01.jpg"],
       "contents": ["[총 작업기간]<br/>2021.07.12 ~ 2021.8.6 <br/><br/>[퍼블리싱]<br/>2021.08.02 ~ 2021.08.06"]
     }
   }
