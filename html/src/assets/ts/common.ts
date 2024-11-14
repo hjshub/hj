@@ -321,7 +321,6 @@ _gb.prototype.CommonFunction = () => {
       }
     });
   };
-  // const check_ = () => {
   //   const answer = [];
   //   const id_list = ["muzi", "frodo", "apeach", "neo"];
   //   const report = ["muzi frodo", "apeach frodo","frodo neo","muzi neo","apeach muzi"];

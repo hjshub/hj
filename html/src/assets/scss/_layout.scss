@@ -505,7 +505,7 @@ main {
                     @include align-items('center');
                     @include justify-content('center');
                     width:100%;
-                    height:5rem;
+                    height:6rem;
                     background-color:#f8f8f8;
                     position:relative;
 
@@ -641,6 +641,10 @@ main {
 
     @include _bp(561px) {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include _bp(396px) {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 
