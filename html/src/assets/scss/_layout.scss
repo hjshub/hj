@@ -415,7 +415,13 @@ main {
 
     &.section-02 {
       .inner2 {
-        min-height: 70vh;
+        min-height: -webkit-calc(100vh - 200px);
+        min-height: calc(100vh - 200px);
+
+        @include _bp(561px) {
+          min-height: -webkit-calc(100vh - 120px);
+          min-height: calc(100vh - 120px);
+        }
       }
 
       dl {
@@ -498,7 +504,21 @@ main {
 
                 em {
                   &.name {
-                    font-size:2.2rem;
+                    font-size:3rem;
+                    @include display-flex;
+                    @include align-items('center');
+                    @include justify-content('center');
+                    height:2rem;
+                    color:#222;
+                    gap:2rem;
+
+                    i {
+                      line-height:1;
+
+                      &:first-of-type {
+                        font-size:3.6rem;
+                      }
+                    }
                   }
                   &.rating {
                     @include display-flex;
@@ -525,7 +545,7 @@ main {
                       left:0;
                       right:100%;
                       background-color:$babyblue;
-                      @include transition(right 0.4s ease-out 0.2s);
+                      @include transition(right 0.4s ease-out 0.3s);
                     }
 
                     &.top {
@@ -589,6 +609,33 @@ main {
         margin-top: 30px;
       }
     }
+
+    &.section-05 {
+      .inner2 {
+        min-height: 60vh;
+      }
+
+      .form-wrap {
+        gap:3rem;
+
+        span {
+          font-size:2rem;
+          padding:1rem 2rem;
+          background-color:$purple;
+          color:$white;
+          border-radius:0.5rem;
+
+          i {
+            font-size:3rem;
+          }
+        }
+        
+        @include _bp(561px){
+          -ms-flex-direction:column;
+          flex-direction: column;
+        }
+      }
+    }
   }
 }
 
@@ -616,6 +663,10 @@ main {
 
   &.edge {
     @include justify-content('space-between');
+  }
+
+  &.wrap {
+    @include flex-wrap('wrap');
   }
 }
 
@@ -749,7 +800,7 @@ main {
     margin-top: 20px;
 
     dt {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     dd {
@@ -763,7 +814,7 @@ main {
           border-radius: 30px;
           background-color: $purple;
           color: $white;
-          font-size: 1.4rem;
+          font-size: 1.6rem;
 
           & + a {
             margin-left: 10px;

@@ -20,6 +20,7 @@ const merge = require('merge-stream');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config.js');
+const fontawesome = require('gulp-fontawesome');
 
 const path = {
   // 작업경로
@@ -32,6 +33,7 @@ const path = {
     images: './src/assets/images/',
     icon: './src/assets/icon/',
     font: './src/assets/font/',
+    file: './src/assets/file/',
   },
 };
 
@@ -44,6 +46,7 @@ const destPath = {
     json: './dist/assets/json/',
     images: './dist/assets/images/',
     font: './dist/assets/font/',
+    file: './dist/assets/file/',
   },
 };
 
@@ -119,6 +122,13 @@ const Webfont = () => {
     .pipe(browserSync.reload({ stream: true }));
 };
 
+const File = () => {
+  //  문서 배포 경로로 복사
+  return src(`${path.assets.file}**/*`)
+    .pipe(dest(destPath.assets.file))
+    .pipe(browserSync.reload({ stream: true }));
+};
+
 const Watch = () => {
   watch(`${path.assets.ts}*.ts`, webpackBuild);
   watch(`${path.assets.json}*.json`, Json);
@@ -126,6 +136,7 @@ const Watch = () => {
   watch(`${path.assets.images}**/*`, Images);
   watch(`${path.assets.scss}*.scss`, Sass_compile);
   watch(`${path.assets.css}*.css`, Css);
+  watch(`${path.temp}**/*.html`, ftawesome);
   watch(`${path.temp}**/*.html`, series(Template, Sass_compile));
 };
 
@@ -153,6 +164,14 @@ const Css = () => {
   // css 배포 경로로 복사
   return src(`${path.assets.css}**/*`)
     .pipe(dest(destPath.assets.css))
+    .pipe(browserSync.reload({ stream: true }));
+};
+
+const ftawesome = () => {
+  // fontawesome
+  return src(`${path.temp}**/*.html`) // files for collecting FontAwesome usages
+    .pipe(fontawesome()) // or `fontawesome("pro")` for pro version
+    .pipe(dest(destPath.assets.font)) // generates CSS and fonts
     .pipe(browserSync.reload({ stream: true }));
 };
 
@@ -195,5 +214,5 @@ const Sprite = () => {
   return merge(imgStream, cssStream);
 };
 
-exports.prod = series(Clean, Json, webpackBuild, Sprite, Sass_compile, Css, Images, Webfont, Template);
+exports.prod = series(Clean, Json, webpackBuild, Sprite, Sass_compile, Css, ftawesome, Images, Webfont, File, Template);
 exports.watch = parallel(Watch, browserSyncInit);

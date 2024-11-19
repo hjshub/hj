@@ -14,6 +14,11 @@
   align-content: $val;
 }
 
+@mixin flex-wrap($val) {
+  -ms-flex-wrap: $val;
+  flex-wrap: $val;
+}
+
 @mixin align-items($val) {
   -webkit-box-align: $val;
   -ms-flex-align: $val;
