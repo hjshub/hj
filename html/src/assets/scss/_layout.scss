@@ -504,19 +504,21 @@ main {
 
                 em {
                   &.name {
-                    font-size:3rem;
+                    font-size:2rem;
                     @include display-flex;
                     @include align-items('center');
                     @include justify-content('center');
-                    height:2rem;
-                    color:#222;
+                    flex-direction:column;
+                    height:6rem;
                     gap:2rem;
 
                     i {
                       line-height:1;
+                      color:rgba(#222, 60%);
 
                       &:first-of-type {
-                        font-size:3.6rem;
+                        font-size:5.2rem;
+                        color:#222;
                       }
                     }
                   }
@@ -528,6 +530,7 @@ main {
                     height:6rem;
                     background-color:#f8f8f8;
                     position:relative;
+                    box-shadow:0 0 8px 2px rgba(#a3a3a380, 50%);
 
                     .r-rating {
                       font-size:1.7rem;
@@ -611,6 +614,13 @@ main {
     }
 
     &.section-05 {
+      min-height:-webkit-calc(100vh - 8rem);
+      min-height:calc(100vh - 8rem);
+
+      @include _bp(821px) {
+        min-height:-wekbit-calc(100vh - 8rem);
+        min-height:calc(100vh - 6rem);
+      }
       .inner2 {
         min-height: 60vh;
       }
@@ -618,21 +628,36 @@ main {
       .form-wrap {
         gap:3rem;
 
+        @include _bp(561px){
+          gap:2rem;
+        }
+
         span {
           font-size:2rem;
-          padding:1rem 2rem;
           background-color:$purple;
           color:$white;
           border-radius:0.5rem;
+          flex-basis:calc(50% - 1.5rem);
+          &:last-of-type {
+            flex-basis:100%;
+          }
+
+          @include _bp(561px){
+            flex-basis:calc(50% - 1rem);
+          }
+
+          a {
+            @include display-flex;
+            @include align-items('center');
+            @include justify-content('center');
+            padding:1rem 2rem;
+            min-height:6rem;
+            gap:1.5rem;
+          }
 
           i {
-            font-size:3rem;
+            font-size:2.4rem;
           }
-        }
-        
-        @include _bp(561px){
-          -ms-flex-direction:column;
-          flex-direction: column;
         }
       }
     }
