@@ -422,8 +422,6 @@ _gb.prototype.CommonFunction = () => {
     //console.log(answer);
     return answer;
   };
-  const generator = () => {
-  };
   const pointerMotion = () => {
     const motionContainer = document.getElementById('contents');
     let deg = 0;
@@ -457,6 +455,51 @@ _gb.prototype.CommonFunction = () => {
       }
     }
   };
+  const copyToClipboard = function (val) {
+    // 클립 보드에 복사
+    var t = document.createElement('textarea');
+
+    document.body.appendChild(t);
+
+    t.value = val;
+    t.select();
+
+    document.execCommand('copy');
+    document.body.removeChild(t);
+  };
+  const copyUrl = function () {
+    gb.toast = true;
+    const anchor_ = document.querySelectorAll('.copy-to-clip');
+    anchor_.forEach(el => {
+      el.onclick = function(e){
+        e.preventDefault();
+        // 클립보드에 복사
+        if(gb.toast){
+          toastPopup(`${el.getAttribute('href')}`);
+          copyToClipboard(el.getAttribute('href'));
+        }
+        gb.toast = false;
+      };
+    })
+  };
+  const toastPopup = function(txt) {
+    const toast = document.createElement('div');
+    toast.classList.add('toast-popup');
+    toast.innerHTML = `<span>${txt}</span><em>클립보드에 복사되었습니다.</em>`;
+
+    const clone = toast.cloneNode(true);
+    document.body.appendChild(clone);
+    gsap.to(clone, {
+      delay:1.2, 
+      opacity:0, 
+      duration:'0.3', 
+      y:'-20%',
+      onComplete : function(){
+        document.body.removeChild(clone);
+        gb.toast = true;
+      }
+    });
+  };
   const init = () => {
     setGnb();
     setPos();
@@ -465,9 +508,9 @@ _gb.prototype.CommonFunction = () => {
     scrollMotion();
     axiosListUp();
     //check_();
-    generator();
     //pointerMotion();
     countRating();
+    copyUrl();
   };
 
   return {

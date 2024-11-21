@@ -18,6 +18,7 @@ export default class _gb {
   listTrg: HTMLElement | any;
   animate: NodeListOf<Element>;
   scrollGage: any;
+  toast: boolean;
 
   constructor() {
     this.wW = window.innerWidth;

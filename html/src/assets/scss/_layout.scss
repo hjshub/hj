@@ -514,11 +514,13 @@ main {
 
                     i {
                       line-height:1;
-                      color:rgba(#222, 60%);
+                      color:$black;
+                      opacity:0.6;
 
                       &:first-of-type {
                         font-size:5.2rem;
-                        color:#222;
+                        color:$black;
+                        opacity:1;
                       }
                     }
                   }
@@ -638,7 +640,7 @@ main {
           @include justify-content('space-between');
           font-size:2rem;
           background-color:$purple;
-          color:rgba($white, 70%);
+          color:$white;
           border-radius:0.5rem;
           flex-basis:calc(50% - 1.5rem);
           min-height:8rem;
@@ -648,15 +650,19 @@ main {
             flex-basis:100%;
           }
 
-          @include _bp(561px){
+          @include _bp(821px){
             flex-basis:100%;
+          }
+
+          em {
+            opacity:0.6;
           }
 
           a {
             @include display-flex;
             @include align-items('center');
             @include justify-content('center');
-            color:rgba($white, 1);
+            color:$white;
             border-width:2px;
             border-style:dashed;
             border-color:currentColor;
@@ -868,4 +874,21 @@ main {
   right: 0;
   background-color: rgba($white, 0.6);
   z-index: 10;
+}
+
+.toast-popup {
+  @include display-flex;
+  @include align-items('center');
+  @include justify-content('center');
+  flex-direction: column;
+  gap:0.5rem;
+  padding:1.5rem 2rem;
+  background-color: rgba(#000, 0.5);
+  border-radius:0.5rem;
+  color:$white;
+  position:fixed;
+  top:50%;
+  left:50%;
+  @include transform(translate(-50%, -50%));
+  z-index:10;
 }
