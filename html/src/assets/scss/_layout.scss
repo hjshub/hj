@@ -654,7 +654,7 @@ main {
             flex-basis:100%;
           }
 
-          em {
+          em:not(:has(a)) {
             opacity:0.6;
           }
 
@@ -663,12 +663,19 @@ main {
             @include align-items('center');
             @include justify-content('center');
             color:$white;
-            border-width:2px;
-            border-style:dashed;
-            border-color:currentColor;
             border-radius:0.5rem;
             height:5rem;
             padding: 0 1rem;
+
+            &:has([class*=fa]){
+              border-width:2px;
+              border-style:dashed;
+              border-color:currentColor;
+            }
+
+            &:not(:has([class*=fa])){
+              text-decoration-line: underline;
+            }
           }
 
           i {
@@ -733,10 +740,6 @@ main {
 
     @include _bp(561px) {
       grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include _bp(396px) {
-      grid-template-columns: repeat(1, 1fr);
     }
   }
 
@@ -848,6 +851,7 @@ main {
       span {
         display: block;
         margin-top: 15px;
+        font-size: 1.6rem;
 
         a {
           display: inline-block;
@@ -855,7 +859,6 @@ main {
           border-radius: 30px;
           background-color: $purple;
           color: $white;
-          font-size: 1.6rem;
 
           & + a {
             margin-left: 10px;
