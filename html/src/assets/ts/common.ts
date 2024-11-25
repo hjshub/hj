@@ -277,9 +277,12 @@ _gb.prototype.CommonFunction = () => {
   const countRating = () => {
     gb.rRange.forEach((r) => {
       if(r.closest('.scrollItem').getBoundingClientRect().x < document.documentElement.clientWidth){
-        r.style.right = `${100 - r.getAttribute('data-range')*1}%`;
+        //r.style.right = `${100 - r.getAttribute('data-range')*1}%`;
+        //r.style.opacity = 1;
+
+        gsap.to(r, {duration:0.6, delay:0.3, 'right':`${100 - r.getAttribute('data-range')*1}%`, opacity:1, ease: "power4.out"});
       }else {
-        r.style.right = `100%`;
+        gsap.to(r, {duration:0, delay:0, 'right':'100%', opacity:0});
       }
 
       if(r.getAttribute('data-range') >= 70){

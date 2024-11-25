@@ -550,7 +550,14 @@ main {
                       left:0;
                       right:100%;
                       background-color:$babyblue;
-                      @include transition(right 0.4s ease-out 0.3s);
+                      // @include transition-duration(0.4s);
+                      // @include transition-timing-function(cubic-bezier(0.25, 0.1, 0.25, 1));
+                      // @include transition-delay(0.2s);
+                      // transition-property: opacity, right;
+                      // -webkit-transition-property: opacity, right;
+                      // -moz-transition-property: opacity, right;
+                      // -ms-transition-property: opacity, right;
+                      opacity:0;
                     }
 
                     &.top {
