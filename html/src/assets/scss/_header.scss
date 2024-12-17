@@ -14,7 +14,7 @@
   opacity:0;
 
   > div:first-of-type {
-    height: 100px;
+    height: 80px;
 
     @include _bp(561px){
       height:60px;
