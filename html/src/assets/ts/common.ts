@@ -267,12 +267,21 @@ _gb.prototype.CommonFunction = () => {
   };
   const animate = () => {
     gb.animate = document.querySelectorAll('.animate');
-    gb.animate.forEach((el) => {
-      if (el.getBoundingClientRect().top < gb.client_H) {
-        el.classList.add('animation--start');
-      } else {
-        el.classList.remove('animation--start');
+    gb.animate.forEach((el, idx) => {
+      if(idx == gb.animate.length - 1){
+        if (el.getBoundingClientRect().top < gb.client_H) {
+          el.classList.add('animation--start');
+        } else {
+          el.classList.remove('animation--start');
+        }
+      }else {
+        if (el.getBoundingClientRect().top < gb.client_H - gb.header.clientHeight) {
+          el.classList.add('animation--start');
+        } else {
+          el.classList.remove('animation--start');
+        }
       }
+      
     });
   };
   const countRating = () => {
@@ -566,8 +575,8 @@ window.addEventListener('scroll', function () {
           x: 0,
           alpha: 1,
           rotation: '720',
-          duration: 0.3,
-          delay: 0.05 * i,
+          duration: 0.2,
+          delay: 0.03 * i,
         });
       }
     } else {
@@ -576,8 +585,8 @@ window.addEventListener('scroll', function () {
           x: 600,
           alpha: 0,
           rotation: '-540',
-          duration: 0.3,
-          delay: 0.05 * j,
+          duration: 0.2,
+          delay: 0.03 * j,
         });
       }
     }
