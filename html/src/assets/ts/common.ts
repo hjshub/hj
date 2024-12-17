@@ -134,6 +134,7 @@ _gb.prototype.CommonFunction = () => {
       pin: true,
       animation: panelScene,
       scrub: 1,
+      stagger: 0.2,
       //markers: true,
       //snap: 1 / (panels.length - 1),
       end: () => `+=${horizonScrollWrapper.scrollWidth - innerWidth}`,
@@ -276,11 +277,11 @@ _gb.prototype.CommonFunction = () => {
   };
   const countRating = () => {
     gb.rRange.forEach((r) => {
-      if(r.closest('.scrollItem').getBoundingClientRect().x < (document.documentElement.clientWidth * 0.75).toFixed()*1){
+      if(r.closest('.scrollItem').getBoundingClientRect().x < (document.documentElement.clientWidth * 0.80).toFixed()*1){
         //r.style.right = `${100 - r.getAttribute('data-range')*1}%`;
         //r.style.opacity = 1;
 
-        gsap.to(r, {duration:0.7, delay:0, 'right':`${100 - r.getAttribute('data-range')*1}%`, opacity:1, ease: "power4.out"});
+        gsap.to(r, {duration:0.7, delay:0, stagger:0.5, 'right':`${100 - r.getAttribute('data-range')*1}%`, opacity:1, ease: "power4.out"});
       }else {
         gsap.to(r, {duration:0, delay:0, 'right':'100%', opacity:0});
       }
