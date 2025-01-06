@@ -122,7 +122,7 @@ _gb.prototype.CommonFunction = () => {
           alpha: 1,
           y: 0,
           delay: 0.02 * idx,
-          //ease: 'expo.out',
+          ease: 'expo.out',
           onComplete(){
             gsap.to(gb.header, { y: 0, opacity: 1, duration: 0.4});
           }
