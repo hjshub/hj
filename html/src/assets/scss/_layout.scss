@@ -304,6 +304,11 @@ textarea {
     height:65vw;
   }
 
+  @include _bp(640px) {
+    width:85vw;
+    height:85vw;
+  }
+
   .tit {
     &-1 {
       @include transform(scale(1));
