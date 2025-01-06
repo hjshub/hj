@@ -26,7 +26,7 @@ export default class _gb {
     this.html = document.querySelector('html');
     this.body = document.querySelector('body');
     this.layout = document.getElementById('layout');
-    this.main = document.getElementById('main');
+    this.main = document.querySelector('main');
     this.header = document.getElementById('gnb');
     this.btnAllMenuOpen = document.querySelector('.button-allMenu-open');
     this.title = document.querySelectorAll('.r-tit');

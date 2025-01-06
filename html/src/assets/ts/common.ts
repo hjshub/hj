@@ -22,8 +22,6 @@ _gb.prototype.CommonFunction = () => {
   const isMob = () => window.innerWidth <= 821;
   const setGnb = () => {
     // 헤더
-    gsap.to(gb.header, { y: 0, opacity: 1, duration: 0.4, delay: 0.4 });
-
     gb.btnAllMenuOpen.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -37,6 +35,7 @@ _gb.prototype.CommonFunction = () => {
         gb.body.append(dimmed);
         gb.body.style.height = '100vh';
         gb.body.style.overflowY = 'hidden';
+        gb.main.style.filter = 'blur(3px)';
 
         dimmed.addEventListener('click', function () {
           allMenuClose();
@@ -48,6 +47,7 @@ _gb.prototype.CommonFunction = () => {
     gb.html.classList.remove('menu-open');
     gb.body.style.height = 'auto';
     gb.body.style.overflowY = 'visible';
+    gb.main.style.filter = '';
     document.querySelector('.dimmed')?.remove();
   };
   const scrollReset = () => {
@@ -59,13 +59,84 @@ _gb.prototype.CommonFunction = () => {
     });
     //ScrollTrigger.refresh(true);
   };
+  const introMotion = () => {
+    const span = document.querySelectorAll('.intro-frame span');
+    
+    gsap.fromTo(span[0], {
+      right:'100%',
+    },{
+      right:0,
+      duration:1.2,
+      ease: 'expo.in'
+    });
+    gsap.fromTo(span[1], {
+      bottom:'100%',
+    },{
+      bottom:0,
+      duration:1.2,
+      ease: 'expo.in'
+    });
+    gsap.fromTo(span[2], {
+      left:'100%',
+    },{
+      left:0,
+      duration:1.2,
+      ease: 'expo.in'
+    });
+    gsap.fromTo(span[3], {
+      top:'100%',
+    },{
+      top:0,
+      duration:1.2,
+      ease: 'expo.in'
+    });
+
+    const step1 = document.querySelectorAll('.step-1 i');
+    step1.forEach((el, idx) => {
+      gsap.fromTo(el, {
+        alpha: 0,
+        y: '-50%',
+        duration: 1.2,
+      },
+      {
+        alpha: 1,
+        y: 0,
+        delay: 0.2 * idx,
+        //ease: 'expo.out',
+        onComplete(){
+          if(idx == step1.length - 1){
+            motionStep2();
+          }
+        }
+      });
+    });
+    const motionStep2 = () => {
+      const step2 = document.querySelectorAll('.step-2 i');
+      step2.forEach((el, idx) => {
+        gsap.fromTo(el, {
+          alpha: 0,
+          y: '50%',
+          duration: 1.2,
+        },
+        {
+          alpha: 1,
+          y: 0,
+          delay: 0.02 * idx,
+          //ease: 'expo.out',
+          onComplete(){
+            gsap.to(gb.header, { y: 0, opacity: 1, duration: 0.4});
+          }
+        });
+      });
+    }
+  };
   const scrollMotion = () => {
     ScrollTrigger.defaults({
       trigger: '.section-01',
       pin: false,
       //pinSpacing: false,
       //anticipatePin: 1,
-      fastScrollEnd: 3000,
+      //fastScrollEnd: 4000,
       scrub: 0.5,
       //markers: true,
       toggleActions: 'restart pause reverse pause',
@@ -82,45 +153,54 @@ _gb.prototype.CommonFunction = () => {
     const scene2 = gsap.timeline();
     const scene3 = gsap.timeline();
     const scene4 = gsap.timeline();
+    const scene5 = gsap.timeline();
 
     ScrollTrigger.create({
       animation: scene1,
     });
     ScrollTrigger.create({
       animation: scene2,
+      pin: true,
     });
     ScrollTrigger.create({
       animation: scene3,
       pin: true,
     });
-    ScrollTrigger.create({
-      animation: scene4,
-      pin: true,
-    });
 
     scene1.to('.r1', {
       alpha: 0,
-      duration: 1,
+      duration: 2,
       x: '-100%',
       rotation: '360',
-    });
-    scene2.to('.r2', {
+    }).to('.r2', {
       alpha: 1,
-      duration: 1,
+      duration: 2,
       x: '0',
       rotation: 0,
-    });
+    }, '-=1.5');
 
-    scene3.to('.tit-1', {
+    scene2.to('.tit-1', {
       alpha: 0,
-      duration: 1,
-      scale: 1.5,
-    });
-
-    scene4.to('.tit-2', {
+      duration: 2,
+      scale: 0.5,
+    }).to('.tit-2', {
       alpha: 1,
-      duration: 1,
+      duration: 2,
       scale: 1,
+    }, '-=1.5');
+    
+    scene3.to('.intro-frame span:nth-of-type(4)', {
+      duration: 0.5,
+      y:'100%',
+    }).to('.intro-frame span:nth-of-type(3)', {
+      duration: 0.5,
+      x:'100%'
+    }).to('.intro-frame span:nth-of-type(2)', {
+      duration: 0.5,
+      y:'-100%'
+    }).to('.intro-frame span:first-of-type', {
+      duration: 0.5,
+      x:'-100%'
     });
 
     const horizonScrollWrapper = document.querySelector('.horizonScroll-wrapper');
@@ -128,6 +208,7 @@ _gb.prototype.CommonFunction = () => {
     const panels = gsap.utils.toArray('.scrollItem');
 
     const panelScene = gsap.timeline();
+    panelScene.timeScale(1);
 
     ScrollTrigger.create({
       trigger: section,
@@ -143,6 +224,7 @@ _gb.prototype.CommonFunction = () => {
     panelScene.to(panels, {
       //x: () => -1 * (horizonScrollWrapper.scrollWidth - innerWidth),
       x: () => -1 * panels[0].clientWidth * (panels.length - 1),
+      duration:2,
       ease: 'none',
     });
   };
@@ -290,7 +372,7 @@ _gb.prototype.CommonFunction = () => {
         //r.style.right = `${100 - r.getAttribute('data-range')*1}%`;
         //r.style.opacity = 1;
 
-        gsap.to(r, {duration:0.7, delay:0, stagger:0.5, 'right':`${100 - r.getAttribute('data-range')*1}%`, opacity:1, ease: "power4.out"});
+        gsap.to(r, {duration:0.7, delay:0, stagger:0.5, 'right':`${100 - r.getAttribute('data-range')*1}%`, opacity:1, ease: 'expo.out'});
       }else {
         gsap.to(r, {duration:0, delay:0, 'right':'100%', opacity:0});
       }
@@ -515,6 +597,7 @@ _gb.prototype.CommonFunction = () => {
   };
   const init = () => {
     setGnb();
+    introMotion();
     setPos();
     scrollReset();
     scrollGage();
@@ -572,21 +655,25 @@ window.addEventListener('scroll', function () {
     if (el.getBoundingClientRect().top < gb.client_H) {
       for (let i in title_) {
         gsap.to(title_[i], {
-          x: 0,
+          //x: 0,
           alpha: 1,
-          rotation: '720',
+          //rotation: '720',
+          y:0,
           duration: 0.2,
           delay: 0.03 * i,
+          ease: 'expo.out'
         });
       }
     } else {
       for (let j in title_) {
         gsap.to(title_[j], {
-          x: 600,
+          //x: 600,
           alpha: 0,
-          rotation: '-540',
+          //rotation: '-540',
+          y:'-50%',
           duration: 0.2,
           delay: 0.03 * j,
+          ease: 'expo.out'
         });
       }
     }

@@ -256,16 +256,15 @@ textarea {
   font-size: 0;
   line-height: 1;
 
-  &.fixed {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    @include transform(translate(-50%, -50%));
-  }
-
   &.inline,
   * {
     display: inline-block;
+  }
+
+  &.r-tit {
+    i {
+      @include transform(translate(0px, -50%));
+    }
   }
 
   strong {
@@ -283,30 +282,115 @@ textarea {
     em {
       color: $white;
     }
+  }
+}
 
-    span {
-      font-style: italic;
-      color: $purple;
-    }
+.intro-box {
+  position: absolute;
+  width:35vw;
+  height:35vw;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+  font-size: 4.5rem;
+  font-family: 's-core-dream-bold', sans-serif;
+  font-weight: normal;
+  line-height: 1.7;
+  text-transform: uppercase;
 
-    &.tit-1 {
-      font-size: 14rem;
+  @include _bp(821px) {
+    font-size: 2.8rem;
+    width:65vw;
+    height:65vw;
+  }
+
+  .tit {
+    &-1 {
       @include transform(scale(1));
-      line-height: 1;
-      font-weight: 600;
+      gap:2rem;
+      height:100%;
+      justify-content: center;
 
+      strong {
+        display:flex;
+        font-size: 14rem;
+        line-height:1;
+        
+        i {
+          font-weight:600;
+        }
+      }
+  
       span {
-        font-size: 3.4rem;
-        font-weight: 400;
+        display:flex;
+
+        i {
+          opacity:0;
+          font-size: 3.4rem;
+          font-weight: 400;
+          font-style: italic;
+          color: $purple;
+        }
       }
     }
 
-    &.tit-2 {
+    &-2 {
       opacity: 0;
-      @include transform(scale(1.5));
+      height:100%;
+      justify-content: center;
+      font-size: 4.4rem;
+      @include transform(scale(0.5));
+
+      @include _bp(640px) {
+        font-size: 3.4rem;
+      }
+    }
+  }
+
+  .intro-frame {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    overflow: hidden;
+
+    span {
+      position:absolute;
+      background-color: $purple;
+      opacity:0.3;
+
+      &:first-of-type {
+        top:0;
+        left:0;
+        right:100%;
+        height:2px;
+      }
+
+      &:nth-of-type(2) {
+        top:0;
+        right:0;
+        bottom:100%;
+        width:2px;
+      }
+
+      &:nth-of-type(3) {
+        bottom:0;
+        right:0;
+        left:100%;
+        height:2px;
+      }
+
+      &:nth-of-type(4) {
+        top:100%;
+        left:0;
+        bottom:0;
+        width:2px;
+      }
     }
   }
 }
+
 .inner {
   padding: 0 60px;
   //max-width: 1920px;
@@ -841,7 +925,7 @@ main {
   .thumbNail {
     border-radius: 25px;
     overflow: hidden;
-    box-shadow: 0 0 5px 2px rgba($black, 0.1);
+    box-shadow: 0 0 5px 2px rgba(#000, 0.1);
   }
 
   dl {
@@ -879,8 +963,9 @@ main {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba($white, 0.6);
+  background-color: rgba(#fff, 0.6);
   z-index: 10;
+  filter:blur(1);
 }
 
 .toast-popup {
