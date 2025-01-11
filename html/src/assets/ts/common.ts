@@ -60,73 +60,75 @@ _gb.prototype.CommonFunction = () => {
     //ScrollTrigger.refresh(true);
   };
   const introMotion = () => {
-    const span = document.querySelectorAll('.intro-frame span');
-    
-    gsap.fromTo(span[0], {
-      right:'100%',
+    const titArray = document.querySelectorAll('.tit-1 > *');
+    const introScene = gsap.timeline();
+
+    introScene.fromTo(titArray[0], {
+      alpha:0,
+      xPercent: -500,
+      duration:0.4,
+    }, {
+      alpha:1,
+      xPercent:0,
+      ease: 'expo.in',
+    }).fromTo(titArray[0], {
+      yPercent: 50,
+      rotateX:90,
+      scale:2,
+      duration:1,
+    }, {
+      rotateX:0,
+      scale:1,
+      onComplete(){
+        frameMotion();
+      }
+    }).to(titArray[0], {
+      yPercent:0,
+      delay:0.6,
+      duration:1
+    }).fromTo(titArray[1].children, {
+      alpha: 0,
+      yPercent: 50,
     },{
-      right:0,
-      duration:1.2,
-      ease: 'expo.in'
-    });
-    gsap.fromTo(span[1], {
-      bottom:'100%',
-    },{
-      bottom:0,
-      duration:1.2,
-      ease: 'expo.in'
-    });
-    gsap.fromTo(span[2], {
-      left:'100%',
-    },{
-      left:0,
-      duration:1.2,
-      ease: 'expo.in'
-    });
-    gsap.fromTo(span[3], {
-      top:'100%',
-    },{
-      top:0,
-      duration:1.2,
-      ease: 'expo.in'
+      alpha: 1,
+      yPercent: 0,
+      ease: 'expo.out',
+      duration:0.02,
+      stagger: 0.02,
+      onComplete(){
+        gsap.to(gb.header, { y: 0, opacity: 1, duration: 0.4});
+      }
     });
 
-    const step1 = document.querySelectorAll('.step-1 i');
-    step1.forEach((el, idx) => {
-      gsap.fromTo(el, {
-        alpha: 0,
-        y: '-50%',
-        duration: 1.2,
-      },
-      {
-        alpha: 1,
-        y: 0,
-        delay: 0.2 * idx,
-        //ease: 'expo.out',
-        onComplete(){
-          if(idx == step1.length - 1){
-            motionStep2();
-          }
-        }
+    const frameMotion = () => {
+      const frameArray = document.querySelectorAll('.intro-frame span');
+      gsap.fromTo(frameArray[0], {
+        right:'100%',
+        duration:0.4,
+      },{
+        right:0,
+        ease: 'expo.in'
       });
-    });
-    const motionStep2 = () => {
-      const step2 = document.querySelectorAll('.step-2 i');
-      step2.forEach((el, idx) => {
-        gsap.fromTo(el, {
-          alpha: 0,
-          y: '50%',
-          duration: 1.2,
-        },
-        {
-          alpha: 1,
-          y: 0,
-          delay: 0.02 * idx,
-          ease: 'expo.out',
-          onComplete(){
-            gsap.to(gb.header, { y: 0, opacity: 1, duration: 0.4});
-          }
-        });
+      gsap.fromTo(frameArray[1], {
+        bottom:'100%',
+        duration:0.4,
+      },{
+        bottom:0,
+        ease: 'expo.in'
+      });
+      gsap.fromTo(frameArray[2], {
+        left:'100%',
+        duration:0.4,
+      },{
+        left:0,
+        ease: 'expo.in'
+      });
+      gsap.fromTo(frameArray[3], {
+        top:'100%',
+        duration:0.4,
+      },{
+        top:0,
+        ease: 'expo.in'
       });
     }
   };
@@ -152,8 +154,6 @@ _gb.prototype.CommonFunction = () => {
     const scene1 = gsap.timeline();
     const scene2 = gsap.timeline();
     const scene3 = gsap.timeline();
-    const scene4 = gsap.timeline();
-    const scene5 = gsap.timeline();
 
     ScrollTrigger.create({
       animation: scene1,

@@ -311,6 +311,8 @@ textarea {
 
   .tit {
     &-1 {
+      perspective: 400px;
+      -webkit-perspective: 400px;
       @include transform(scale(1));
       gap:2rem;
       height:100%;
@@ -320,6 +322,10 @@ textarea {
         display:flex;
         font-size: 14rem;
         line-height:1;
+
+        @include _bp(640px) {
+          font-size: 11rem;
+        }
         
         i {
           font-weight:600;
@@ -328,6 +334,8 @@ textarea {
   
       span {
         display:flex;
+        perspective: 400px;
+        -webkit-perspective: 400px;
 
         i {
           opacity:0;
@@ -335,6 +343,10 @@ textarea {
           font-weight: 400;
           font-style: italic;
           color: $purple;
+
+          @include _bp(640px) {
+            font-size: 3rem;
+          }
         }
       }
     }
@@ -347,7 +359,7 @@ textarea {
       @include transform(scale(0.5));
 
       @include _bp(640px) {
-        font-size: 3.4rem;
+        font-size: 3rem;
       }
     }
   }
